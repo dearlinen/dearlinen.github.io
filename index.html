@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G25BKRSLZM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G25BKRSLZM');
+</script>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,14 +23,14 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="shortcut icon" href="/images/logo.jpg">
     
 <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"dearlinen.github.io","root":"/","language":"zh-CN"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/logo.jpg","favicon":"/images/logo.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"求知若渴 虚心若愚"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -38,13 +47,59 @@
 <main class="page-container">
 
     
+        <div class="first-screen-container flex-center fade-in-down-animation">
+    <div class="content flex-center">
+        <div class="description">
+            求知若渴 虚心若愚
+        </div>
+        
+            <div class="s-icon-list">
+                
+                    
+                        
+                            <span class="s-icon-item github">
+                                <a target="_blank" href="https://github.com/dearlinen">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </span>
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                            <span class="s-icon-item email">
+                                <a href="mailto:z@hvid.icu">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </span>
+                        
+                    
+                
+            </div>
+        
+    </div>
+</div>
+
+    
 
     <div class="page-main-content">
 
         <div class="page-main-content-top">
             <header class="header-wrapper">
 
-    <div class="header-content">
+    <div class="header-content has-first-screen">
         <div class="left">
             
             <a class="logo-title" href="/">
@@ -120,25 +175,54 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/hello-world/">
-                        Hello World
+                    <a href="/config-workspace/">
+                        工作环境配置备忘录
                     </a>
                 </h3>
 
                 <div class="home-article-content markdown-body">
                     
-                        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, yo...
+                        系统环境我的系统是 Windows ，我习惯保持 Windows 桌面简洁 ，不在桌面上放置过多图标 ，所以我将一些工具配置在path环境变量中 ，可以在 shell 中快捷启动
+shell由于我使用 Windows 系统 ，所以 shell 方面我...
                     
                 </div>
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Jul 31 2021 11:31:35 GMT+0000">2021-07-31</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun Aug 08 2021 19:19:54 GMT+0000">2021-08-08</span></span>
         
         
     </div>
 
-    <a href="/hello-world/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/config-workspace/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/js-async/">
+                        我对JavaScript中异步的理解
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        为什么存在异步机制?浏览器中有一些默认的异步任务, 比如进行网络请求,定时器等.这些任务本质上是需要执行一定的时间去执行的,如果不是异步执行的,那么就会造成阻塞.由于JavaScript是单线程执行的,这些造成阻塞的代码其实一直没有执行完毕,也就导致...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Aug 02 2021 13:44:57 GMT+0000">2021-08-02</span></span>
+        
+        
+    </div>
+
+    <a href="/js-async/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -167,14 +251,13 @@
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
+              <span>2021</span>&nbsp;-&nbsp;
             
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">linen</a>
         </div>
-        
         <div class="theme-info info-item">
             由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
-        </div>
+        </div >
         
     </div>
 </footer>
