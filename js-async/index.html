@@ -177,42 +177,42 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="为什么存在异步机制"><a href="#为什么存在异步机制" class="headerlink" title="为什么存在异步机制?"></a>为什么存在异步机制?</h3><p>浏览器中有一些默认的异步任务, 比如进行网络请求,定时器等.这些任务本质上是需要执行一定的时间去执行的,如果不是异步执行的,那么就会造成阻塞.由于JavaScript是单线程执行的,这些造成阻塞的代码其实一直没有执行完毕,也就导致了之后的代码无法被执行, 在浏览器中会表现为锁定所有UI,并阻塞所有的用户交互.用户可以点击按钮,但是无法立即得到回应,因为响应动作的代码还在排队,这就造成了卡慢的现象,显然为了良好的用户体验,异步是必要的</p>
-<p>异步看起来是并发的,其实也确实如此.只有JavaScript的执行是单线程的,异步函数的执行交由<code>web api</code>接管,这整个执行过程是并发的</p>
-<h3 id="异步和同步是怎么协调执行的"><a href="#异步和同步是怎么协调执行的" class="headerlink" title="异步和同步是怎么协调执行的"></a>异步和同步是怎么协调执行的</h3><p>同步和异步任务都依赖于 <strong>事件循环</strong> ,JavaScript是基于事件驱动设计的,所以每次事件被触发,就会进行一轮事件循环,例如事件冒泡,如果父级元素有事件绑定,那么每次冒泡到一个父级元素都会触发一次事件循环.</p>
+            <h3 id="为什么存在异步机制"><a href="#为什么存在异步机制" class="headerlink" title="为什么存在异步机制?"></a>为什么存在异步机制?</h3><p>浏览器中有一些默认的异步任务 ,  比如进行网络请求 , 定时器等。这些任务本质上是需要一定的时间去执行的 , 如果不是异步执行的 , 那么就会造成阻塞。由于JavaScript是单线程执行的 , 这些造成阻塞的代码其实一直没有执行完毕 , 也就导致了之后的代码无法被执行 ,  在浏览器中会表现为锁定所有UI , 并阻塞所有的用户交互。用户可以点击按钮 , 但是无法立即得到回应 , 因为响应动作的代码还在排队 , 这就造成了卡慢的现象 , 显然为了良好的用户体验 , 异步是必要的</p>
+<p>异步看起来是并发的 , 其实也确实如此。只有JavaScript的执行是单线程的 , 异步函数的执行交由<code>web api</code>接管 , 这整个执行过程是并发的</p>
+<h3 id="异步和同步是怎么协调执行的"><a href="#异步和同步是怎么协调执行的" class="headerlink" title="异步和同步是怎么协调执行的"></a>异步和同步是怎么协调执行的</h3><p>同步和异步任务都依赖于 <strong>事件循环</strong>  , JavaScript是基于事件驱动设计的 , 所以每次事件被触发 , 就会进行一轮事件循环 , 例如事件冒泡 , 如果父级元素有事件绑定 , 那么每次冒泡到一个父级元素都会触发一次事件循环。</p>
 <p>很多文章讲述的事件循环可能是这样:</p>
 <blockquote>
-<p>同步的任务进入调用栈,微任务和宏任务由运行环境接管<br>同步任务执行完毕后, 微任务进入执行栈, 接着宏任务进入执行栈<br>每次事件被触发, 都会按照同步-&gt;微任务-&gt;?宏任务的顺序来执行代码</p>
+<p>同步的任务进入调用栈 , 微任务和宏任务由运行环境接管<br>同步任务执行完毕后 ,  微任务进入执行栈 ,  接着宏任务进入执行栈<br>每次事件被触发 ,  都会按照同步-&gt;微任务-&gt;?宏任务的顺序来执行代码</p>
 </blockquote>
-<p>实际上这并不正确,各种标准中也没有宏任务这个概念,MDN的<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth" >一篇文章<i class="fas fa-external-link-alt"></i></a>中有提到宏任务,但是只是翻译者标注的,根据我搜集的资料,事件循环的机制应该是这样的:</p>
+<p>实际上这并不正确 , 各种标准中也没有宏任务这个概念 , MDN的<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth" >一篇文章<i class="fas fa-external-link-alt"></i></a>中有提到宏任务 , 但是只是翻译者标注的 , 根据我搜集的资料 , 事件循环的机制应该是这样的:</p>
 <ul>
-<li><p>首先,要了解这几个概念: <code>任务(task)</code>,<code>微任务(micro task)</code>,<code>回调队列(callback queue)</code>,<code>执行栈(call stack)</code></p>
+<li><p>首先 , 要了解这几个概念: <code>任务(task)</code> , <code>微任务(micro task)</code> , <code>回调队列(callback queue)</code> , <code>执行栈(call stack)</code></p>
 </li>
-<li><p>任务和微任务是对异步的细分,这两个概念有助于区分执行顺序,其中任务包含<code>timer</code>和<code>I/O</code>事件等,微任务包括<code>promise函数</code>,<code>异步函数(使用async关键字声明的函数,并且使用了await关键字)</code>,<code>mutation</code>等</p>
-<img  height="30%" src="/imgs/eventloop.png" width="50%" style="margin: 0 auto;"/></li>
-<li><p>同步的函数会直接进入调用栈中,按顺序执行</p>
+<li><p>任务和微任务是对异步的细分 , 这两个概念有助于区分执行顺序 , 其中任务包含<code>timer</code>和<code>I/O</code>事件等 , 微任务包括<code>promise函数</code> , <code>异步函数(使用async关键字声明的函数 , 并且使用了await关键字)</code> , <code>mutation</code>等</p>
+<img  height="30%" src="/imgs/eventloop。png" width="50%" style="margin: 0 auto;"/></li>
+<li><p>同步的函数会直接进入调用栈中 , 按顺序执行</p>
 </li>
-<li><p>如果遇到微任务,就把回调函数放入微任务队列,如果遇到任务,就把回调函数放入任务队列.进入队列的顺序取决于代码书写顺序</p>
+<li><p>如果遇到微任务 , 就把回调函数放入微任务队列 , 如果遇到任务 , 就把回调函数放入任务队列。进入队列的顺序取决于代码书写顺序</p>
 </li>
-<li><p>实际上异步的函数不是即时进入队列的,一般是由web api等待异步函数执行完毕,再将回调函数放入队列,如setTimeOut,其实直到到期后才把回调函数放入任务队列,promise函数则是等待到状态为已敲定(settled)后将回调函数放入队列</p>
+<li><p>实际上异步的函数不是即时进入队列的 , 一般是由web api等待异步函数执行完毕 , 再将回调函数放入队列 , 如setTimeOut , 其实直到到期后才把回调函数放入任务队列 , promise函数则是等待到状态为已敲定(settled)后将回调函数放入队列</p>
 </li>
-<li><p>当执行栈为空,即同步函数执行完毕之后,会检查微任务队列,如果不为空则执行其中的回调函数,接着检查任务队列,如果不为空,就执行这些回调函数</p>
+<li><p>当执行栈为空 , 即同步函数执行完毕之后 , 会检查微任务队列 , 如果不为空则执行其中的回调函数 , 接着检查任务队列 , 如果不为空 , 就执行这些回调函数</p>
 </li>
-<li><p>在es6中ecma将micro task定义为job,micro task queue定义为job queue,相关资料难以查找,且MDN并未使用该名词,所以我目前并未查证此概念</p>
+<li><p>在es6中ecma将micro task定义为job , micro task queue定义为job queue , 相关资料难以查找 , 且MDN并未使用该名词 , 所以我目前并未查证此概念</p>
 </li>
 </ul>
-<h3 id="标准之外的异步"><a href="#标准之外的异步" class="headerlink" title="标准之外的异步"></a>标准之外的异步</h3><p>console.*方法族可能会异步的执行, 因为它们目前并不是规范的一部分,它们的行为完全由宿主环境的实现方式来决定</p>
+<h3 id="标准之外的异步"><a href="#标准之外的异步" class="headerlink" title="标准之外的异步"></a>标准之外的异步</h3><p>console.*方法族可能会异步的执行 ,  因为它们目前并不是规范的一部分 , 它们的行为完全由宿主环境的实现方式来决定</p>
 <p>例子:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    <span class="attr">x</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a.x)</span><br><span class="line"></span><br><span class="line">a.x++</span><br></pre></td></tr></table></figure>
-<p>这样可能使得<code>a.x++</code>在<code>console.log</code>之前执行, 不过什么情况下会发生这种情况取决于引擎的调度, 很难观察的到</p>
-<p>这种可能性可能会导致一些奇怪的bug,如果在<code>console.log</code>语句之后对对象进行了修改,而输出的结果不符合预期的话,也应该考虑<code>console.*</code>族异步执行的可能性</p>
-<p>同样的,一些可能存在的潜在的异步也会导致某些怪异的结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    <span class="attr">x</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>。log(a。x)</span><br><span class="line"></span><br><span class="line">a.x++</span><br></pre></td></tr></table></figure>
+<p>这样可能使得<code>a.x++</code>在<code>console.log</code>之前执行 ,  不过什么情况下会发生这种情况取决于引擎的调度 ,  很难观察的到</p>
+<p>这种可能性可能会导致一些奇怪的bug , 如果在<code>console.log</code>语句之后对对象进行了修改 , 而输出的结果不符合预期的话 , 也应该考虑<code>console.*</code>族异步执行的可能性</p>
+<p>同样的 , 一些可能存在的潜在的异步也会导致某些怪异的结果</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a class="link"   target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS" >GitHub-You don’t know JavaScript<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link"   target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2734025/is-javascript-guaranteed-to-be-single-threaded/2734311#2734311" >stack overflow-Is JavaScript guaranteed to be single-threaded?<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link"   target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=8aGhZQkoFbQ" >Youtube-what is Event Loop<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link"   target="_blank" rel="noopener" href="https://v8.dev/blog/fast-async" >V8 blog-Faster async functions and promises<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" >Jake archibald-Tasks, microtasks, queues and schedules<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" >Jake archibald-Tasks ,  microtasks ,  queues and schedules<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link"   target="_blank" rel="noopener" href="http://latentflip.com/loupe/" >Loupe-event loop visualization<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 
