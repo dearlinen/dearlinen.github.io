@@ -18,7 +18,7 @@
     
     <title>
         
-            工作环境配置备忘录 |
+            知识点备忘录 |
         
         Linen Blog
     </title>
@@ -140,7 +140,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">工作环境配置备忘录</span>
+            <span class="title-hover-animation">知识点备忘录</span>
         </div>
 
         
@@ -158,7 +158,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-08-08 19:19:54
+        <i class="fas fa-edit"></i>&nbsp;2021-08-10 14:11:42
     </span>
     
     
@@ -167,15 +167,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a>&nbsp;
+                        <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a>&nbsp;
                     </li>
                 
             </ul>
@@ -193,43 +185,105 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h1><p>我的系统是 Windows ，我习惯保持 Windows 桌面简洁 ，不在桌面上放置过多图标 ，所以我将一些工具配置在<code>path</code>环境变量中 ，可以在 shell 中快捷启动</p>
-<h3 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h3><p>由于我使用 Windows 系统 ，所以 shell 方面我使用新版的<code>power shell</code> ，较旧版功能更多 ，更加好用。例如新增的别名<code>rm</code> ，删除<code>node_modules</code>更快了。 我使用<code>Windows terminal</code>作为外壳 ，<code>oh-my-posh</code>作为美化工具。字体方面由于 git 提示符和 emoji 支持的缘故 ，大部分字体不支持这些特殊符号 ，所以我选用了<code>jet brains mono</code></p>
-<p>除此之外 ，windows 新增的<code>wsl(Windows subsystem for Linux)</code>功能使得 Linux 可以运行在 Windows 中 ，我使用发行版是<code>Ubuntu</code>。<br>现在 wsl 支持 gui 功能 ，可以依据<a class="link"   target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps" >这篇文档<i class="fas fa-external-link-alt"></i></a> 进行配置。<a class="link"   target="_blank" rel="noopener" href="https://github.com/cascadium/wsl-windows-toolbar-launcher/blob/master/README%E3%80%82md#troubleshooting" >WSL Windows Toolbar Launcher<i class="fas fa-external-link-alt"></i></a> 是一个在状态栏快捷启动 wsl-gui 应用的工具 ，这个仓库的 readme 也讲了一些 wsl-gui 可能出现的 bug 以及解决方法</p>
-<h3 id="实用软件清单"><a href="#实用软件清单" class="headerlink" title="实用软件清单"></a>实用软件清单</h3><ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows" >nvm for windows<i class="fas fa-external-link-alt"></i></a>  ， windows 版 nvm ，用来控制 node 版本</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/pwsh" >oh my posh<i class="fas fa-external-link-alt"></i></a>  ，用来美化 power shell</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/PowerShell/PowerShell" >power shell<i class="fas fa-external-link-alt"></i></a>  ，powershell 的最新版 ，不同于 Windows 自带的 powershell v1</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab" >windows terminal<i class="fas fa-external-link-alt"></i></a>  ，<br>微软官方的终端外壳</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://www.jetbrains.com/lp/mono/" >jet brains mono<i class="fas fa-external-link-alt"></i></a>  ， jet brains 的字体 ，支持各种特殊符号 ，我用在终端</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/tonsky/FiraCode" >fira code<i class="fas fa-external-link-alt"></i></a>  ， 一款开源的字体 ， 字体连字比较好看 ，我用在编辑器</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://draw.io/" >draw io<i class="fas fa-external-link-alt"></i></a>  ，流程图工具 ，全部功能都集成在网站 ，当然也有客户端</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://typora.io/" >typora<i class="fas fa-external-link-alt"></i></a>  ，所见即所得的 markdown 编辑器</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/microsoft/PowerToys" >power toys<i class="fas fa-external-link-alt"></i></a>  ，微软官方的 Windows 功能增强工具</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/p/windbg/9pgjgd53tn86?rtc=1" >WinDbg preview<i class="fas fa-external-link-alt"></i></a>  ，微软官方的 Windows debug 工具 ，可以用来解析 minidump 文件 ，我用来查看引起系统蓝屏的来源</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/oh-my-fish/oh-my-fish" >oh my fish<i class="fas fa-external-link-alt"></i></a>  ，美化 Linux shell</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://ohmyz.sh/" >oh my zsh<i class="fas fa-external-link-alt"></i></a>  ，美化 Linux shell</li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm" >nvm<i class="fas fa-external-link-alt"></i></a>  ，用来在 wsl 中进行 node 版本控制</li>
-</ul>
-<h1 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h1><h3 id="nvm-和-npm"><a href="#nvm-和-npm" class="headerlink" title="nvm 和 npm"></a>nvm 和 npm</h3><p>npm 的配置项主要为更改<code>registry</code>地址 ，或者设置代理 ，<br>使用<code>nvm</code>时 ，因为 npm 的配置文件在<code>~/。npmrc</code>中 ，切换 node 版本后并不会使配置项失效<br>大部分工具的配置文件在<code>~/</code>目录下 ，比如 git 的<code>。gitconfig</code> ，node repl 的历史记录<code>。node_repl_history</code> ，</p>
-<h3 id="power-shell"><a href="#power-shell" class="headerlink" title="power shell"></a>power shell</h3><p>在 power shell 中输入<code>$profile</code>可以获取它的配置文件路径 ，这个文件可能没有被创建 ，需要手动创建。<br>power shell 的配置文件用来配置它的加载项 ，如<code>oh-my-posh</code>的主题和一些自定义的别名 ，函数</p>
-<h3 id="wsl"><a href="#wsl" class="headerlink" title="wsl"></a>wsl</h3><p>wsl 的配置和 windows 下大同小异 ，仅下载时较为麻烦 ，可以通过换源 ，设置代理 ，git 安装等方法解决</p>
-<h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><p>编辑器我同时使用<code>visual studio code</code>和<code>webstorm</code> ，vscode 更加轻量 ，更加开放 ，有一些特色功能 ，webstorm 相对 vscode 来说 ，内建的功能更智能</p>
-<ul>
-<li><p>字体</p>
-<ul>
-<li>编辑器字体使用<code>fira code</code> ，不过它不支持中文字体 ，如果不设置一个次要字体用来显示中文 ，就会默认为宋体</li>
-<li>终端字体和 power shell 字体一致 ，使用 jet brains mono</li>
+            <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
+<li>JavaScript中有基本类型(primitive values)和复杂类型（object）两种</li>
+<li>基本类型有<code>字符串</code> <code>数字</code> <code>布尔</code> <code>null</code> <code>undefined</code> <code>symbol</code></li>
+<li>复杂类型涵盖了对象和对象的子类型，包括<code>数组</code> <code>对象本身</code> <code>set</code> <code>Date</code>等等<h3 id="基本类型的‘属性’"><a href="#基本类型的‘属性’" class="headerlink" title="基本类型的‘属性’"></a>基本类型的‘属性’</h3></li>
+<li>JavaScript中存在一些原生函数，如<code>String</code>，<code>Number</code>。这些函数也可以当作构造函数来使用，不过可能会发生意料之外的事情。如<code> typeof new String(&#39;1&#39;)</code>这段代码会返回<code>&#39;Object&#39;</code></li>
+<li>JavaScript中的基本类型可以调用方法，实现原理得益于<code>封装对象（object wrapper）</code>其运行过程如下：<ul>
+<li>基本类型在调用方法时，会创建一个包含基本类型字面量的特殊对象，并且具有原型链上的所有方法</li>
+<li>方法运行并返回结果</li>
+<li>特殊对象被销毁，留下基本值</li>
 </ul>
 </li>
-<li><p>插件/扩展</p>
-<ul>
-<li><code>代码片段生成</code>:我习惯使用<code>JavaScript (ES6) code snippets</code>这个扩展</li>
-<li><code>终端</code>:在 vscode 中可以使用<code>remote-ssh</code>来连接服务器进行远程开发 ，也可以使用<code>remote-wsl</code>在 wsl 中进行 Linux 环境下的开发</li>
-<li><code>格式化</code>:我习惯使用<code>prettier</code></li>
-<li><code>主题</code>:颜色主题使用<code>One Dark Pro</code>或<code>Material Theme</code> ，文件图标主题使用<code>Material Icons</code> ，我个人比较喜欢 material 的风格</li>
+<li>对象都包含有一个名为<code>[[Class]]</code>的内部属性，这个属性无法直接访问，不过可以通过<code>Object.prototype.toString</code>来查看。如<code>Object.prototype.toString.call(/.+/)</code>会返回<code>&#39;[object RegExp]&#39;</code> 。基本类型也可以通过这个方法调用，这也得益于封装对象<h3 id="类型判段"><a href="#类型判段" class="headerlink" title="类型判段"></a>类型判段</h3></li>
+<li>typeof运算符仅能准确判断部分基本类型，null不在此列，<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null" >这是一个bug<i class="fas fa-external-link-alt"></i></a> </li>
+<li>instanceof可以判断复杂值的类型，本质是通过原型链查找该对象的构造函数<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3></li>
+<li>将一种值显式（类型）转换为另一种值称为显式类型转换，值被隐式的转换为另一种值称为隐式（类型）转换/强制（类型）转换。这两种转换的形式没有明确的界定，如果知晓规则，那么难懂的转换对你来说也是显示转换。</li>
+<li>对象的类型转换是基于<code>ToPrimitive</code>的抽象操作来完成的，这个方法接收一个’<code>期望值</code>‘,标准中称之为<code>hint</code>。<code>hint</code>有三种情况，<code>stringm</code>，<code>number</code> ，<code>default</code>，依据<code>期望</code>的不同如果来确定转换结果。如<code>hint</code>为字符串则适用于字符串转换，如<code>alert函数</code>‘期望’一个字符串，接受到的参数就会被转为字符串。</li>
+<li>为了进行基本类型转换，JavaScript会尝试调用三个方法<ul>
+<li>调用<code>ToPrimitive</code>，并传递<code>hint</code></li>
+<li>如果<code>hint</code>为<code>string</code>则执行<code>toString-&gt;valueOf</code></li>
+<li><code>number</code>和<code>default</code>则是<code>valueOf-&gt;toString</code></li>
+<li>如果<code>valueOf</code>和<code>toString</code>均不返回基本类型值，会产生<code>TypeError</code>错误。</li>
 </ul>
 </li>
+<li>从es5开始，<code>Object.creat</code>创建的对象的<code>prototype</code>属性值为<code>null</code>，所以它没有<code>valueOf</code>和<code>toString</code>方法</li>
+</ul>
+<blockquote>
+<p> 不同类型对象的valueOf()方法的返回值</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Array</td>
+<td>返回数组对象本身</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔值</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>从1970年1月1日午夜开始计的毫秒数</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>函数本身</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>数字值</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>默认情况下返回对象本身</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串值</td>
+</tr>
+<tr>
+<td>Math,Erroe</td>
+<td>无返回值</td>
+</tr>
+</tbody></table>
+<ul>
+<li><h3 id="ToString转换"><a href="#ToString转换" class="headerlink" title="ToString转换"></a>ToString转换</h3></li>
+<li>基本类型的转换操作为<code>null</code>转换为 <code>&#39;null&#39;</code>， <code>undefined</code>转换为 <code>&#39;undefined&#39;</code>， <code>true</code>转换为 <code>&#39;true&#39;</code><ul>
+<li>数字类型的转换规则与以上类似，不过极大值和极小值会用指数形式表现</li>
+</ul>
+</li>
+<li>普通对象的转换会调用<code>Object.prototype.toString</code>来进行转换，返回内部属性<code>[[class]]</code>的值。当然，要是重写了方法就要另当别论<ul>
+<li>数组的toString方法默认为将所有数组项字符串化，然后用<code>,</code>连接起来</li>
+<li>JSON.stringify无法处理不安全的json值，如<code>undefined</code> <code>symbol</code> <code>function</code> 相互引用的对象等，在处理<code>undefined</code> <code>symbol</code> <code>function</code>时会返回<code>undefined</code>，处理相互引用的对象会报错。JSON.stringify在对象中遇到<code>undefined</code>、<code>function</code>和<code>symbol</code>时会将其自动忽略，在数组中会将其转换为<code>null</code>。</li>
+</ul>
+</li>
+<li><h3 id="ToNumber转换"><a href="#ToNumber转换" class="headerlink" title="ToNumber转换"></a>ToNumber转换</h3></li>
+<li> 如果把非数字值用在数学运算里，就会发生<code>number</code>类型转换</li>
+<li> 如<code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code> <code>一元-（前置-）</code> <code>一元+（前置+）</code></li>
+<li> 其中<code>true</code>转为1，<code>false</code>转为0，<code>undefined</code>转为NaN，<code>null</code>转为0，<code>&#39;&#39;</code>空字符串转为0</li>
+<li>例如：<code>+ []</code>,其步骤为：<ul>
+<li> 为了将<code>[]</code>空数组字面量转为基本类型，调用<code>[].valueOf().toString()</code>，得到空字符串<code>&#39;&#39;</code></li>
+<li> 最后将空字符串<code>&#39;&#39;</code>转为数字，得到0</li>
+</ul>
+</li>
+<li>ToBoolean转换</li>
+<li>所有对象都是真值（truthy） </li>
+<li>对布尔值的转换只有两类<ol>
+<li>可以转为false的值（falsy value）</li>
+<li>其他被强制转换为true的值</li>
+</ol>
+</li>
+<li>JavaScript规范了假值有<code>undefined</code> <code>null</code> <code>false</code> <code>+0</code> <code>-0</code> <code>NaN</code> <code>&#39;&#39;</code></li>
+<li>从逻辑上看，除了假值之外的应该都是真值。但是JavaScript规范并没有对此明确定义。</li>
+<li>实际上，浏览器中还存在<code>假值对象</code>，浏览器在某些特定情况下，创建了一些外来（exotic）值，这些就是“假值对象”。假值对象和普通对象看起来并无二致，但是进行类型转换时的结果为<code>false</code>。最常见的例子是<code>document.all</code>。</li>
+<li>真值（truthy value）就是规范的假值列表以外的值。不考虑外部环境的情况下，<code>[]</code>， <code>&#123;&#125;</code>， <code>function()&#123;&#125;</code>都是真值。这和<code>ToPrimitive</code>相悖，但只能这么去记忆他的行为</li>
 </ul>
 
         </div>
@@ -239,29 +293,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/memo/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">知识点备忘录</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/js-async/"
+                           href="/config-workspace/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">我对JavaScript中异步的理解</span>
+                                <span class="post-nav-title-item">工作环境配置备忘录</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
