@@ -183,7 +183,9 @@
             <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
 <li>JavaScript中有基本类型(primitive values)和复杂类型（object）两种</li>
 <li>基本类型有<code>字符串</code> <code>数字</code> <code>布尔</code> <code>null</code> <code>undefined</code> <code>symbol</code></li>
-<li>复杂类型涵盖了对象和对象的子类型，包括<code>数组</code> <code>对象本身</code> <code>set</code> <code>Date</code>等等<h3 id="基本类型的‘属性’"><a href="#基本类型的‘属性’" class="headerlink" title="基本类型的‘属性’"></a>基本类型的‘属性’</h3></li>
+<li>复杂类型涵盖了对象和对象的子类型，包括<code>数组</code> <code>对象本身</code> <code>set</code> <code>Date</code>等等</li>
+</ul>
+<h3 id="基本类型的‘属性’"><a href="#基本类型的‘属性’" class="headerlink" title="基本类型的‘属性’"></a>基本类型的‘属性’</h3><ul>
 <li>JavaScript中存在一些原生函数，如<code>String</code>，<code>Number</code>。这些函数也可以当作构造函数来使用，不过可能会发生意料之外的事情。如<code> typeof new String(&#39;1&#39;)</code>这段代码会返回<code>&#39;object&#39;</code></li>
 <li>JavaScript中的基本类型可以调用方法，实现原理得益于<code>封装对象（object wrapper）</code>其运行过程如下：<ul>
 <li>基本类型在调用方法时，会创建一个包含基本类型字面量的特殊对象，并且具有原型链上的所有方法</li>
@@ -191,11 +193,15 @@
 <li>特殊对象被销毁，留下基本值</li>
 </ul>
 </li>
-<li>对象都包含有一个名为<code>[[Class]]</code>的内部属性，这个属性无法直接访问，不过可以通过<code>Object.prototype.toString</code>来查看。如<code>Object.prototype.toString.call(/.+/)</code>会返回<code>&#39;[object RegExp]&#39;</code> 。基本类型也可以通过这个方法调用，这也得益于封装对象<h3 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h3></li>
+<li>对象都包含有一个名为<code>[[Class]]</code>的内部属性，这个属性无法直接访问，不过可以通过<code>Object.prototype.toString</code>来查看。如<code>Object.prototype.toString.call(/.+/)</code>会返回<code>&#39;[object RegExp]&#39;</code> 。基本类型也可以通过这个方法调用，这也得益于封装对象</li>
+</ul>
+<h3 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h3><ul>
 <li>typeof运算符仅能准确判断部分基本类型，null不在此列，<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null" >这是一个bug<i class="fas fa-external-link-alt"></i></a> </li>
-<li>instanceof可以判断复杂值的类型，本质是通过原型链查找该对象的构造函数<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3></li>
+<li>instanceof可以判断复杂值的类型，本质是通过原型链查找该对象的构造函数</li>
+</ul>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ul>
 <li>将一种值显式（类型）转换为另一种值称为显式类型转换，值被隐式的转换为另一种值称为隐式（类型）转换/强制（类型）转换。这两种转换的形式没有明确的界定，如果知晓规则，那么难懂的转换对你来说也是显示转换。</li>
-<li>对象的类型转换是基于<code>ToPrimitive</code>的抽象操作来完成的，这个方法接收一个’<code>期望值</code>‘,标准中称之为<code>hint</code>。<code>hint</code>有三种情况，<code>stringm</code>，<code>number</code> ，<code>default</code>，依据<code>期望</code>的不同如果来确定转换结果。如<code>hint</code>为字符串则适用于字符串转换，如<code>alert函数</code>‘期望’一个字符串，接受到的参数就会被转为字符串。</li>
+<li>对象到基本类型转换是基于<code>ToPrimitive</code>的抽象操作来完成的，这个方法接收一个’<code>期望值</code>‘,标准中称之为<code>hint</code>。<code>hint</code>有三种情况，<code>stringm</code>，<code>number</code> ，<code>default</code>，依据<code>期望</code>的不同如果来确定转换结果。如<code>hint</code>为字符串则适用于字符串转换，如<code>alert函数</code>‘期望’一个字符串，接受到的参数就会被转为字符串。</li>
 <li>为了进行基本类型转换，JavaScript会尝试调用三个方法<ul>
 <li>调用<code>ToPrimitive</code>，并传递<code>hint</code></li>
 <li>如果<code>hint</code>为<code>string</code>则执行<code>toString-&gt;valueOf</code></li>
@@ -203,7 +209,10 @@
 <li>如果<code>valueOf</code>和<code>toString</code>均不返回基本类型值，会产生<code>TypeError</code>错误。</li>
 </ul>
 </li>
-<li><code>Symbol.toPrimitive</code>是现代JavaScript中内置的对象属性。<code>ToPrimitive</code>抽象操作现在改由<code>Symbol.toPrimitive</code>实现。它可以作为函数来调用，藉此可实现一些’奇技淫巧‘，例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">0</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive](hint) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(hint)    <span class="comment">//default number number</span></span><br><span class="line">      <span class="built_in">this</span>.a++;</span><br><span class="line">     <span class="keyword">if</span> (<span class="built_in">this</span>.a&gt;<span class="number">2</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">this</span>.a</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj==<span class="number">1</span> &amp;&amp; obj&gt;<span class="number">1</span> &amp;&amp; obj&lt;<span class="number">1</span> ); <span class="comment">//true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><code>Symbol.toPrimitive</code>是现代JavaScript中内置的对象属性。<code>ToPrimitive</code>抽象操作现在改由<code>Symbol.toPrimitive</code>实现。它可以作为函数来调用，藉此可实现一些’奇技淫巧‘，例如：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">0</span>,</span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive](hint) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(hint)    <span class="comment">//default number number</span></span><br><span class="line">      <span class="built_in">this</span>.a++;</span><br><span class="line">     <span class="keyword">if</span> (<span class="built_in">this</span>.a&gt;<span class="number">2</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">this</span>.a</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj==<span class="number">1</span> &amp;&amp; obj&gt;<span class="number">1</span> &amp;&amp; obj&lt;<span class="number">1</span> ); <span class="comment">//true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
 <li>从es5开始，<code>Object.creat</code>创建的对象的<code>prototype</code>属性值为<code>null</code>，所以它没有<code>valueOf</code>和<code>toString</code>方法</li>
 </ul>
 <blockquote>
@@ -226,7 +235,7 @@
 </tr>
 <tr>
 <td>Date</td>
-<td>从1970年1月1日午夜开始计的毫秒数</td>
+<td>从1970年1月1日午夜开始计算的毫秒数</td>
 </tr>
 <tr>
 <td>Function</td>
@@ -250,30 +259,28 @@
 </tr>
 </tbody></table>
 <ul>
-<li><h3 id="ToString转换"><a href="#ToString转换" class="headerlink" title="ToString转换"></a>ToString转换</h3></li>
-<li>基本类型的转换操作为<code>null</code>转换为 <code>&#39;null&#39;</code>， <code>undefined</code>转换为 <code>&#39;undefined&#39;</code>， <code>true</code>转换为 <code>&#39;true&#39;</code><ul>
+<li><h3 id="ToString转换"><a href="#ToString转换" class="headerlink" title="ToString转换"></a>ToString转换</h3><ul>
+<li>基本类型的转换操作为<code>null</code>转换为 <code>&#39;null&#39;</code>， <code>undefined</code>转换为 <code>&#39;undefined&#39;</code>， <code>true</code>转换为 <code>&#39;true&#39;</code></li>
 <li>数字类型的转换规则与以上类似，不过极大值和极小值会用指数形式表现</li>
-</ul>
-</li>
-<li>普通对象的转换会调用<code>Object.prototype.toString</code>来进行转换，返回内部属性<code>[[class]]</code>的值。当然，要是重写了方法就要另当别论<ul>
+<li>普通对象的转换会调用<code>Object.prototype.toString</code>来进行转换，返回内部属性<code>[[class]]</code>的值。</li>
 <li>数组的toString方法默认为将所有数组项字符串化，然后用<code>,</code>连接起来</li>
 <li>JSON.stringify无法处理不安全的json值，如<code>undefined</code> <code>symbol</code> <code>function</code> 相互引用的对象等，在处理<code>undefined</code> <code>symbol</code> <code>function</code>时会返回<code>undefined</code>，处理相互引用的对象会报错。JSON.stringify在对象中遇到<code>undefined</code>、<code>function</code>和<code>symbol</code>时会将其自动忽略，在数组中会将其转换为<code>null</code>。</li>
 </ul>
 </li>
-<li><h3 id="ToNumber转换"><a href="#ToNumber转换" class="headerlink" title="ToNumber转换"></a>ToNumber转换</h3></li>
+<li><h3 id="ToNumber转换"><a href="#ToNumber转换" class="headerlink" title="ToNumber转换"></a>ToNumber转换</h3><ul>
 <li> 如果把非数字值用在数学运算里，就会发生<code>number</code>类型转换</li>
-<li>如<code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code> <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code> <code>一元-（前置-）</code> <code>一元+（前置+）</code><ul>
+<li> 如<code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code> <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code> <code>一元-（前置-）</code> <code>一元+（前置+）</code></li>
 <li> <code>+</code> 运算符其实触发的是<code>default</code>的<code>hint</code>，因为它可能是数字加减，也可能是字符串的连字符，此运算符的结果取决于其右侧的值。<code>==</code>同样也是如此，因为它不比较运算符两侧值的类型</li>
-</ul>
-</li>
-<li> 其中<code>true</code>转为1，<code>false</code>转为0，<code>undefined</code>转为NaN，<code>null</code>转为0，<code>&#39;&#39;</code>空字符串转为0</li>
+<li>其中<code>true</code>转为1，<code>false</code>转为0，<code>undefined</code>转为NaN，<code>null</code>转为0，<code>&#39;&#39;</code>空字符串转为0<ul>
 <li>例如：<code>+ []</code>,其步骤为：<ul>
-<li> 为了将<code>[]</code>空数组字面量转为基本类型，调用<code>[].valueOf().toString()</code>，得到空字符串<code>&#39;&#39;</code></li>
+<li> 为了将<code>[]</code>空数组字面量转为基本类型，调用<code>[].valueOf().toString()</code>，得到空字符串<code>&#39;&#39;</code>  </li>
 <li> 最后将空字符串<code>&#39;&#39;</code>转为数字，得到0</li>
 </ul>
 </li>
-<li>ToBoolean转换</li>
-<li>所有对象都是真值（truthy） </li>
+</ul>
+</li>
+<li><h3 id="ToBoolean转换"><a href="#ToBoolean转换" class="headerlink" title="ToBoolean转换"></a>ToBoolean转换</h3></li>
+<li>所有对象都是真值（truthy value） </li>
 <li>对布尔值的转换只有两类<ol>
 <li>可以转为false的值（falsy value）</li>
 <li>其他被强制转换为true的值</li>
@@ -282,7 +289,9 @@
 <li>JavaScript规范了假值有<code>undefined</code> <code>null</code> <code>false</code> <code>+0</code> <code>-0</code> <code>NaN</code> <code>&#39;&#39;</code></li>
 <li>从逻辑上看，除了假值之外的应该都是真值。但是JavaScript规范并没有对此明确定义。</li>
 <li>实际上，浏览器中还存在<code>假值对象</code>，浏览器在某些特定情况下，创建了一些外来（exotic）值，这些就是“假值对象”。假值对象和普通对象看起来并无二致，但是进行类型转换时的结果为<code>false</code>。最常见的例子是<code>document.all</code>。</li>
-<li>真值（truthy value）就是规范的假值列表以外的值。不考虑外部环境的情况下，<code>[]</code>， <code>&#123;&#125;</code>， <code>function()&#123;&#125;</code>都是真值。这和<code>ToPrimitive</code>相悖，但只能这么去记忆他的行为。像<code>typeof null === &#39;object&#39;</code>一样，这个<code>特性</code>可能会长期存在。</li>
+<li>真值（truthy value）就是规范的假值列表以外的值。不考虑外部环境的情况下，<code>[]</code>， <code>&#123;&#125;</code>， <code>function()&#123;&#125;</code>都是真值。这和<code>ToPrimitive</code>相悖，但只能这么去记忆他的行为。像<code>typeof null === &#39;object&#39;</code>一样，这个<code>&#39;特性&#39;</code>可能会长期存在。</li>
+</ul>
+</li>
 </ul>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3>
         </div>
