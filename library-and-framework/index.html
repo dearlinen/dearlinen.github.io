@@ -18,7 +18,7 @@
     
     <title>
         
-            library_and_framework |
+            API备忘录 |
         
         Linen Blog
     </title>
@@ -127,7 +127,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">library_and_framework</span>
+            <span class="title-hover-animation">API备忘录</span>
         </div>
 
         
@@ -153,7 +153,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>3 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>257 字</span>
         </span>
     
     
@@ -169,7 +169,35 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="no-content-here"><a href="#no-content-here" class="headerlink" title="no content here!"></a>no content here!</h1>
+            <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><ul>
+<li><code>v-if</code> <code>v-show</code><ul>
+<li>两种指令都是控制元素的显示与否，不同之处在于<code>v-if</code>通过控制DOM是否渲染来控制，<code>v-show</code>通过设置元素的<code>display</code>属性来控制</li>
+</ul>
+</li>
+<li><code>v-for</code><ul>
+<li>它可以遍历数组，对象，也可以简单的创建一个计数器</li>
+<li>它的<code>key</code>属性是必须的，可以用来降低内部diff算法的复杂度和确定遍历得到的值的次序</li>
+</ul>
+</li>
+<li><code>v-model</code><ul>
+<li>它用来实现双向绑定。本质是基于Object.definePrototype 和es6中的proxy</li>
+</ul>
+</li>
+<li><code>props</code></li>
+<li>生命周期</li>
+<li>虚拟DOM<ul>
+<li>Vue为了更高效的更新DOM而使用了虚拟DOM，以实现高效率的渲染<ul>
+<li>虚拟DOM的思路是通过对比新旧节点树来获取不同的部分，每次只更新改变过的DOM节点<ul>
+<li>虚拟节点树是由子组件树构建而成的，它是根系即是子组件</li>
+<li>虚拟DOM比较新旧节点树差异并渲染的过程由<code>patch</code>完成，也可以称作<code>patching</code>算法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
         </div>
 
         
