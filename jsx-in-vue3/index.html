@@ -18,7 +18,7 @@
     
     <title>
         
-            归档: 2021/8 |
+            jsx_in_vue3 |
         
         Linen Blog
     </title>
@@ -76,7 +76,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 归档
@@ -104,7 +104,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">归档</a>
                 </li>
             
@@ -124,76 +124,101 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">jsx_in_vue3</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/logo.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">linen</span>
+                        
+                            <span class="author-label">learner</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-11-01 19:40:39
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[2]</span>
-            </div>
-            <ul class="article-list">
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/jsx-in-vue3/"
-                        >jsx_in_vue3</a>
-                        <span class="article-date">11-01</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/faux/"
-                        >本地搭建FauxPilot服务，实现代码生成</a>
-                        <span class="article-date">09-16</span>
+                    <li>
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">[4]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/library-and-framework/"
-                        >API备忘录</a>
-                        <span class="article-date">08-13</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/memo/"
-                        >知识点备忘录</a>
-                        <span class="article-date">08-10</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/config-workspace/"
-                        >工作环境配置备忘录</a>
-                        <span class="article-date">08-08</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/js-async/"
-                        >我对JavaScript中异步的理解</a>
-                        <span class="article-date">08-02</span>
-                    </li>
-                
-            </ul>
-        </section>
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>185 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="在vue3中使用jsx的踩坑记录"><a href="#在vue3中使用jsx的踩坑记录" class="headerlink" title="在vue3中使用jsx的踩坑记录"></a>在vue3中使用jsx的踩坑记录</h1><h2 id="bug-pinia"><a href="#bug-pinia" class="headerlink" title="bug-pinia"></a>bug-pinia</h2><p>在函数式组件中使用pinia时报错</p>
+<pre><code class="javascript">Uncaught Error: [🍍]: getActivePinia was called with no active Pinia. Did you forget to install piina?
+</code></pre>
+<p>这个错误和在组件外使用pinia并且未注册是一样的。</p>
+<p>原因是在函数式组件中，导出的函数相当于<code>setup</code>入口，<code>usePinia()</code>必须在函数体里面调用。</p>
+<p>而<code>ref()</code>如果写在函数体外，虽然看起来行为没有区别，但实际上是单例模式</p>
+<h2 id="bug-第三方组件值绑定问题"><a href="#bug-第三方组件值绑定问题" class="headerlink" title="bug-第三方组件值绑定问题"></a>bug-第三方组件值绑定问题</h2><p>用了element-plus作为ui库，使用<code>el-input</code>时发现无法通过类似React的<code>value</code>属性+<code>onChange</code>事件的方式模拟双向绑定。</p>
+<p>后发现使用类组件(render)时可以直接使用<code>v-model</code></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/faux/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">本地搭建FauxPilot服务，实现代码生成</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -220,6 +245,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
